@@ -21,7 +21,11 @@ export default async function Home() {
               alt={""}
               width={media.meta.original.width}
               height={media.meta.original.height}
-              sizes={getImageSizes({ md: "33vw", fallback: "33vw" })}
+              sizes={getImageSizes({
+                sm: "100vw",
+                md: "50vw",
+                fallback: "33vw",
+              })}
             />
           ))
         )}
