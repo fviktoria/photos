@@ -1,5 +1,6 @@
 import { Container } from "@/components/container/container";
 import { Image } from "@/components/image/image";
+import { MasonryGrid } from "@/components/masonry-grid/masonry-grid";
 import { pixelfedClient } from "@/lib/api/pixelfed/pixelfed-client";
 import { getImageSizes } from "@/lib/util/image-sizes";
 import { notFound } from "next/navigation";
@@ -11,7 +12,7 @@ export default async function Home() {
 
   return (
     <Container>
-      <div className="grid grid-cols-3 gap-4">
+      <MasonryGrid>
         {data.map((item) =>
           item.media_attachments.map((media) => (
             <Image
@@ -24,7 +25,7 @@ export default async function Home() {
             />
           ))
         )}
-      </div>
+      </MasonryGrid>
     </Container>
   );
 }

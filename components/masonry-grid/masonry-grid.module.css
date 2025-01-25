@@ -1,0 +1,14 @@
+.wrapper {
+  & > div > * {
+    width: 33.3333%;
+    padding: 0.5rem;
+
+    @media screen and (max-width: 768px) {
+      width: 50%;
+    }
+
+    @media screen and (max-width: 480px) {
+      width: 100%;
+    }
+  }
+}
