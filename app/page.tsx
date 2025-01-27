@@ -1,8 +1,7 @@
 import { Container } from "@/components/container/container";
-import { Image } from "@/components/image/image";
 import { MasonryGrid } from "@/components/masonry-grid/masonry-grid";
+import { PixelfedMedia } from "@/components/pixelfed-media/pixelfed-media";
 import { pixelfedClient } from "@/lib/api/pixelfed/pixelfed-client";
-import { getImageSizes } from "@/lib/util/image-sizes";
 import { notFound } from "next/navigation";
 
 export default async function Home() {
@@ -15,17 +14,10 @@ export default async function Home() {
       <MasonryGrid>
         {data.map((item) =>
           item.media_attachments.map((media) => (
-            <Image
+            <PixelfedMedia
               key={media.id}
-              src={media.url}
-              alt={""}
-              width={media.meta.original.width}
-              height={media.meta.original.height}
-              sizes={getImageSizes({
-                sm: "100vw",
-                md: "50vw",
-                fallback: "33vw",
-              })}
+              media={media}
+              caption={item.content}
             />
           ))
         )}
