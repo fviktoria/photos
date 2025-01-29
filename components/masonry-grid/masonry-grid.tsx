@@ -1,18 +1,21 @@
 "use client";
 
-import { ComponentProps, FC, PropsWithChildren } from "react";
-import { Masonry } from "react-masonry";
+import { FC, PropsWithChildren } from "react";
 
-import styles from "./masonry-grid.module.css";
+import { useMasonry } from "@/lib/hooks/use-masonry";
 
-type MasonryGridProps = ComponentProps<typeof Masonry>;
+type MasonryGridProps = PropsWithChildren;
 
 export const MasonryGrid: FC<PropsWithChildren<MasonryGridProps>> = ({
   children,
 }) => {
+  const ref = useMasonry();
   return (
-    <div className={styles.wrapper}>
-      <Masonry>{children}</Masonry>
+    <div
+      ref={ref}
+      className="grid items-start gap-4 sm:grid-cols-2 md:grid-cols-3"
+    >
+      {children}
     </div>
   );
 };
